@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Delta.Profile"
+             Title="Profile"
+             Shell.BackgroundColor="#0055A4"
+             BackgroundColor="LightGray">
+
+    <ContentPage.Resources>
+        <Style x:Key="SectionHeaderStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="TextColor" Value="#0055A4"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="EntryStyle" TargetType="Entry">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="PlaceholderColor" Value="Black"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#0055A4"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout Margin="20" Spacing="10">
+
+            <!-- Gender selection section -->
+            <Frame CornerRadius="10" Padding="10">
+                <StackLayout>
+                    <Label Text="Gender" Style="{StaticResource SectionHeaderStyle}"/>
+                    <Picker x:Name="GenderPicker"
+                            Title="Select Gender"
+                            TextColor="Black"
+                            SelectedIndexChanged="OnGenderSelected"
+                            Style="{StaticResource EntryStyle}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Male</x:String>
+                                <x:String>Female</x:String>
+                                <x:String>Other</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                    <Label Text="Age (years)" Style="{StaticResource SectionHeaderStyle}"/>
+                    <Entry x:Name="AgeEntry" Style="{StaticResource EntryStyle}" Placeholder="Enter your Age (years)" Keyboard="Numeric"/>
+
+                    <Label Text="Height (inches)" Style="{StaticResource SectionHeaderStyle}"/>
+                    <Entry x:Name="HeightEntry" Style="{StaticResource EntryStyle}" Placeholder="Enter your Height (inches)" Keyboard="Numeric"/>
+
+                    <Label Text="Weight (pounds)" Style="{StaticResource SectionHeaderStyle}"/>
+                    <Entry x:Name="WeightEntry" Style="{StaticResource EntryStyle}" Placeholder="Enter your Weight (pounds)" Keyboard="Numeric"/>
+
+                    <Label Text="Waist Measurement (inches)" Style="{StaticResource SectionHeaderStyle}"/>
+                    <Entry x:Name="WaistEntry" Style="{StaticResource EntryStyle}" Placeholder="Enter your Waist Measurement (inches)" Keyboard="Numeric"/>
+
+                    <Label Text="Neck Measurement (inches)" Style="{StaticResource SectionHeaderStyle}"/>
+                    <Entry x:Name="NeckEntry" Style="{StaticResource EntryStyle}" Placeholder="Enter your Neck Measurement (inches)" Keyboard="Numeric"/>
+
+                    <StackLayout x:Name="HipEntryLayout" IsVisible="False">
+                        <Label Text="Hip Measurement (inches)" Style="{StaticResource SectionHeaderStyle}"/>
+                        <Entry x:Name="HipEntry" Style="{StaticResource EntryStyle}" Placeholder="Enter your Hip Measurement (inches)" Keyboard="Numeric"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+            <!-- Display Info section -->
+            <Frame CornerRadius="10" Padding="10">
+                <Label x:Name="DisplayInfoLabel" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="#0055A4" />
+            </Frame>
+
+            <!-- Buttons -->
+            <Button x:Name="SaveProfileButton" Text="Update Profile" Style="{StaticResource ButtonStyle}" Clicked="OnSaveProfileButtonClicked"/>
+            <Button x:Name="SignOutButton" Text="Sign Out" Style="{StaticResource ButtonStyle}" Clicked="OnSignOutButtonClicked"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

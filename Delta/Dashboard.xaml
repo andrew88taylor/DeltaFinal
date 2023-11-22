@@ -1,0 +1,83 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Delta.Dashboard"
+             NavigationPage.HasNavigationBar="False"
+             Shell.BackgroundColor="#0055A4"
+             BackgroundColor="LightGray">
+    <!-- Light gray background for the page -->
+
+    <ContentPage.Resources>
+        <!-- Button Style with Ole Miss powder blue -->
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#0055A4"/>
+            <!-- Ole Miss powder blue -->
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+
+        <!-- Label Style with complementary colors -->
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="#0055A4"/>
+            <!-- Ole Miss powder blue -->
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid Padding="20" RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Add Exercise Button -->
+        <Button x:Name="AddExerciseButton"
+                Style="{StaticResource ButtonStyle}"
+                Grid.Row="0"
+                Clicked="AddExerciseButtonClicked"
+                Text="Add Exercise" />
+
+        <!-- Exercise List View -->
+        <ListView x:Name="ExercisesListView"
+                  Grid.Row="1"
+                  HasUnevenRows="True"
+                  SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10" Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Frame for Exercise Item -->
+                            <Frame Grid.Column="0" Style="{StaticResource FrameStyle}">
+                                <StackLayout Spacing="5">
+                                    <Label Text="{Binding Type}" Style="{StaticResource LabelStyle}" />
+                                    <!-- Display Custom Fields Here -->
+                                    <Label Text="{Binding CustomFieldsDisplay}" Style="{StaticResource LabelStyle}" />
+                                </StackLayout>
+                            </Frame>
+
+                            <!-- Delete Exercise Button -->
+                            <Button Grid.Column="1"
+                                    Text="Delete"
+                                    Style="{StaticResource ButtonStyle}"
+                                    Clicked="OnDeleteExerciseClicked"
+                                    CommandParameter="{Binding .}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Save Workout Button -->
+        <Button x:Name="SaveWorkoutButton"
+                Style="{StaticResource ButtonStyle}"
+                Grid.Row="2"
+                Clicked="SaveWorkoutClicked"
+                Text="Save Workout" />
+    </Grid>
+</ContentPage>

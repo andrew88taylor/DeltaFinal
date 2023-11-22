@@ -1,0 +1,41 @@
+﻿<ContentPage
+    x:Class="Delta.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="LightGray">
+
+    <ContentPage.Resources>
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#006BA6"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="Margin" Value="10,0"/>
+        </Style>
+
+        <Style x:Key="EntryStyle" TargetType="Entry">
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid Padding="20" VerticalOptions="CenterAndExpand">
+            <Frame BackgroundColor="White" CornerRadius="30" Padding="20" HorizontalOptions="FillAndExpand">
+                <StackLayout Spacing="15">
+                    <Label Text="Welcome Back!" FontAttributes="Bold" FontSize="24" Style="{StaticResource LabelStyle}"/>
+                    <Label Text="Login to your account" Style="{StaticResource LabelStyle}"/>
+
+                    <Entry Placeholder="Email" Text="{Binding UserName}" Style="{StaticResource EntryStyle}"/>
+                    <Entry Placeholder="Password" IsPassword="True" Text="{Binding UserPassword}" Style="{StaticResource EntryStyle}"/>
+
+                    <Button Text="Login" Command="{Binding LoginBtn}" Style="{StaticResource ButtonStyle}"/>
+                    <Button Text="Click To Register" Command="{Binding RegisterBtn}" Style="{StaticResource ButtonStyle}"/>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
