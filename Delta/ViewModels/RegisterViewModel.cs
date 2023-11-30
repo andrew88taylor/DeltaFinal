@@ -77,7 +77,6 @@ namespace Delta.ViewModels
             }
             catch (FirebaseAuthException fae)
             {
-                // existing FirebaseAuthException handling code...
             }
             catch (Exception ex)
             {
