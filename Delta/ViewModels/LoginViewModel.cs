@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.ComponentModel;
-using Microsoft.Maui.Controls; // Updated namespace for .NET MAUI
+using Microsoft.Maui.Controls; 
 
 namespace Delta.ViewModels
 {
@@ -80,7 +80,6 @@ namespace Delta.ViewModels
             catch (Exception ex)
             {
                 await App.Current.MainPage.DisplayAlert("Alert", "An error occurred during login", "OK");
-                // Consider logging the exception for further analysis
             }
         }
 
